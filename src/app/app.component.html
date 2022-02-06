@@ -1,0 +1,15 @@
+<mat-grid-list cols="5" rowHeight="4:2" gutterSize="10px">
+  <mat-grid-tile
+    *ngFor="let item of [].constructor(5); let i = index">
+    <app-dice [rollDice]="rollDice" (diceValueOut)="diceRolled($event)"></app-dice>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<app-row *ngFor="let tileRow of tiles; let i = index;" [columns]="tileRow" [diceValues]="emitValues"
+[calculatorFn]="callbacks[i]">
+</app-row>
+
+<button class="roll-button" disabled mat-raised-button>Total: {{sum}}</button>
+
+<button class="roll-button" (click)="rollBtnClicked()" mat-raised-button>Roll</button>
